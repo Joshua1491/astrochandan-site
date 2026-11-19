@@ -7,7 +7,7 @@
   // ONE SWITCH for all contact links. Set to the WhatsApp number in international digits, e.g. '919876543210'.
   // While it is empty, every Call / WhatsApp / quote button points to the on-page booking form, the floating
   // WhatsApp button is hidden, and forms show a "booking opens shortly" note without sending anything.
-  var CONTACT_WHATSAPP = '';
+  var CONTACT_WHATSAPP = '917217802531';
   var DIGITS = String(CONTACT_WHATSAPP).replace(/\D/g, ''), HAS = DIGITS.length >= 10;
   var PHONE = !HAS ? '' : DIGITS.indexOf('91') === 0 && DIGITS.length === 12 ? '+91 ' + DIGITS.slice(2, 7) + ' ' + DIGITS.slice(7) : '+' + DIGITS;
   var WA = HAS ? 'https://wa.me/' + DIGITS : '';
