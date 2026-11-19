@@ -40,7 +40,7 @@
     <article class="card rounded-[16px] p-6 md:p-10 mt-6">
       <div id="reading" class="fade grid gap-10 md:grid-cols-[0.8fr_1.2fr]" aria-live="polite">
         <div class="min-w-0">
-          <div class="flex items-center gap-4"><span id="hGlyph" class="font-display text-7xl gilt leading-none"></span><div><h2 id="hName" class="font-display text-3xl md:text-4xl"></h2><p id="hMeta" class="text-sm muted"></p></div></div>
+          <div class="flex items-center gap-4"><span id="hGlyph" class="zg text-7xl leading-none"></span><div><h2 id="hName" class="font-display text-3xl md:text-4xl"></h2><p id="hMeta" class="text-sm muted"></p></div></div>
           <dl class="mt-8 grid grid-cols-2 gap-2.5 text-sm">
             <div class="rounded-[10px] border hair p-3"><dt class="label muted text-[0.56rem]">Element</dt><dd id="hEl" class="mt-1 font-medium"></dd></div>
             <div class="rounded-[10px] border hair p-3"><dt class="label muted text-[0.56rem]">Ruler</dt><dd id="hLord" class="mt-1 font-medium"></dd></div>
@@ -87,7 +87,7 @@
   S.forEach(function (s, i) { if (q && (s[1].toLowerCase() === q || s[0].toLowerCase() === q)) sign = i; });
   S.forEach(function (s, i) {
     var b = document.createElement('button'); b.type = 'button'; b.className = 'chip rounded-[10px] px-3 py-3 text-left';
-    b.innerHTML = '<span class="font-display gilt text-2xl leading-none">' + s[2] + '\ufe0e</span><span class="block font-medium text-sm mt-1.5">' + s[0] + '</span><span class="block text-[0.7rem] muted">' + s[1] + '</span>';
+    b.innerHTML = '<span class="zg text-2xl leading-none">' + s[2] + '\ufe0e</span><span class="block font-medium text-sm mt-1.5">' + s[0] + '</span><span class="block text-[0.7rem] muted">' + s[1] + '</span>';
     b.addEventListener('click', function () { sign = i; try { localStorage.setItem('cj-sign', String(i)); } catch (e) {} history.replaceState(null, '', '?sign=' + s[1].toLowerCase()); update(); });
     chips.appendChild(b);
   });

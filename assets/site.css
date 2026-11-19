@@ -55,7 +55,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .mobile-menu.open { display: block; }
 
 /* Ambient sky */
-.sky { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.sky { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;
+  /* fade the decorative glow out well before the section ends, so it never stops in a hard line */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 92%); mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 92%); }
 .orb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .85; animation: drift 22s ease-in-out infinite alternate; }
 .orb.a { width: 46vw; height: 46vw; max-width: 620px; max-height: 620px; left: -8%; top: -10%; background: var(--glow1); }
 .orb.b { width: 40vw; height: 40vw; max-width: 540px; max-height: 540px; right: -6%; top: 8%; background: var(--glow2); animation-duration: 28s; }
@@ -174,7 +176,11 @@ details.place[open] summary::before { content: "− "; }
 .tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); }
 .chip { background: var(--card); border: 1px solid var(--line); transition: transform .3s var(--ease), border-color .3s var(--ease); }
 .chip:hover { border-color: var(--gilt); transform: translateY(-2px); }
-.chip[aria-pressed="true"] { background: linear-gradient(160deg, var(--glow1), var(--glow2)); border-color: var(--gilt); }
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.chip[aria-pressed="true"] .muted { color: color-mix(in srgb, var(--bg) 75%, transparent); }
+/* Zodiac glyphs: a symbol font with full-weight signs instead of the thin serif forms */
+.zg { font-family: "Apple Symbols", "Segoe UI Symbol", "Noto Sans Symbols 2", "DejaVu Sans", sans-serif; color: var(--gilt); font-weight: 400; }
+.chip[aria-pressed="true"] .zg { color: var(--accent2); }
 .fade { transition: opacity .35s var(--ease), transform .35s var(--ease); }
 .fade.swap { opacity: 0; transform: translateY(8px); }
 

@@ -13,10 +13,11 @@
   function table(head, rows, cls) { return '<div class="tbl-wrap"><table class="tbl ' + (cls || '') + '"><thead><tr>' + head.map(function (h) { return '<th>' + h + '</th>'; }).join('') + '</tr></thead><tbody>' + rows.join('') + '</tbody></table></div>'; }
   function signName(i) { return A.SIGNS[i] + ' <span class="muted text-sm">(' + A.SIGNS_EN[i] + ')</span>'; }
   function nowJD() { return Date.now() / 86400000 + 2440587.5; }
+  var quiet = false; // true while the on-load sample runs, so the page doesn't jump
   function show(html, sample) {
     var r = $('#result'); r.innerHTML = (sample ? '<p class="mb-5"><span class="sample-tag">Sample report</span> <span class="text-sm muted ml-2">' + sample + '</span></p>' : '') + html;
     r.hidden = false;
-    if (!sample) r.scrollIntoView({ behavior: A && window.CJ && window.CJ.reduce ? 'auto' : 'smooth', block: 'start' });
+    if (!sample && !quiet) r.scrollIntoView({ behavior: A && window.CJ && window.CJ.reduce ? 'auto' : 'smooth', block: 'start' });
   }
   function err(form, msg) { var s = form.querySelector('[role="status"]'); if (s) { s.style.color = 'var(--ink)'; s.textContent = msg; } }
   function ok(form) { var s = form.querySelector('[role="status"]'); if (s) s.textContent = ''; }
@@ -266,12 +267,14 @@
   // Defaults and sample reports
   var f = document.querySelector('form[data-tool-form]');
   var today = new Date(Date.now() + 5.5 * 3600000).toISOString().slice(0, 10);
+  quiet = true;
   if (f && f.querySelector('[name="date"]')) { f.querySelector('[name="date"]').value = today; handlers[tool](f); }
   if (f && f.querySelector('[name="month"]')) { f.querySelector('[name="month"]').value = today.slice(0, 7); handlers[tool](f); }
+  quiet = false;
   var smp = 'A sample chart: born 15 August 1990, 06:30, New Delhi. Not a real client.';
   if (tool === 'kundli') show(kundliHTML(sampleBirth(SAMPLE)), smp);
   if (['moon-sign', 'lagna', 'nakshatra', 'manglik', 'sade-sati'].indexOf(tool) >= 0 && f) {
-    fill(f, '', SAMPLE); handlers[tool](f);
+    fill(f, '', SAMPLE); quiet = true; handlers[tool](f); quiet = false;
     var r0 = $('#result'); r0.insertAdjacentHTML('afterbegin', '<p class="mb-5"><span class="sample-tag">Sample result</span> <span class="text-sm muted ml-2">' + smp + ' Enter your own details above.</span></p>');
     ['dob', 'tob', 'pob'].forEach(function (k) { var el = f.querySelector('[name="' + k + '"]'); if (el) el.value = ''; });
   }
