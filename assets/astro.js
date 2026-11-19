@@ -381,6 +381,21 @@
     for (i = 0; i < CITIES.length; i++) if (CITIES[i][0].toLowerCase().indexOf(q) === 0 || CITIES[i][0].toLowerCase().split(',')[0] === q.split(',')[0]) return CITIES[i];
     return null;
   }
+  // UTC offset in hours for an IANA zone at a local civil time, using the browser's time-zone history
+  // (so India's +6:30 war time in 1942–45, or summer time abroad, come out right).
+  function tzOffset(zone, y, mo, d, h, mi) {
+    try {
+      var fmt = new Intl.DateTimeFormat('en-US', { timeZone: zone, hourCycle: 'h23', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' });
+      var local = Date.UTC(y, mo - 1, d, h, mi), guess = local, off = 0;
+      for (var i = 0; i < 3; i++) {
+        var p = {}; fmt.formatToParts(new Date(guess)).forEach(function (x) { p[x.type] = +x.value; });
+        off = Date.UTC(p.year, p.month - 1, p.day, p.hour % 24, p.minute, p.second) - guess;
+        guess = local - off;
+      }
+      return off / 3600000;
+    } catch (e) { return 5.5; }
+  }
+
   // Reads date/time/place from a form using a name prefix. Returns {jd, place, ...} or {error}
   function readBirth(form, pre, opts) {
     opts = opts || {};
@@ -388,16 +403,23 @@
     var date = v('dob'), time = v('tob') || (opts.timeOptional ? '12:00' : ''), placeTxt = v('pob');
     if (!date) return { error: 'Please enter the date of birth.' };
     if (!time) return { error: 'Please enter the time of birth (as close as you know it).' };
+    var pin = form.querySelector('[name="' + pre + 'pob"]'), zone = null;
     var lat = parseFloat(v('lat')), lon = parseFloat(v('lon')), tz = parseFloat(v('tz')), name = placeTxt;
-    if (isNaN(lat) || isNaN(lon)) {
-      var c = findCity(placeTxt);
-      if (!c) return { error: 'We could not find "' + (placeTxt || 'that place') + '" in our list. Pick a city from the list, or open "Place not listed?" and enter its latitude, longitude and time zone.' };
-      lat = c[1]; lon = c[2]; if (isNaN(tz)) tz = c[3]; name = c[0];
-    }
-    if (isNaN(tz)) tz = 5.5;
     var dp = date.split('-').map(Number), tp = time.split(':').map(Number);
     if (dp[0] < 1800 || dp[0] > 2100) return { error: 'Please enter a year between 1800 and 2100.' };
-    return { jd: jdFromLocal(dp[0], dp[1], dp[2], tp[0], tp[1], tz), lat: lat, lon: lon, tz: tz, place: name, date: date, time: v('tob'), y: dp[0], mo: dp[1], d: dp[2] };
+    if (isNaN(lat) || isNaN(lon)) {
+      var hit = null;
+      if (pin && pin.dataset.lat) hit = { lat: +pin.dataset.lat, lon: +pin.dataset.lon, tz: pin.dataset.tz, label: pin.dataset.label };
+      else if (placeTxt && window.CJ && CJ.places.ready()) { var r = CJ.places.search(placeTxt, 1)[0]; if (r) hit = r; }
+      if (!hit && placeTxt) { var c = findCity(placeTxt); if (c) hit = { lat: c[1], lon: c[2], off: c[3], label: c[0] }; }
+      if (!placeTxt) { if (pin) pin.setAttribute('aria-invalid', 'true'); return { error: 'Please enter the place of birth and choose it from the suggestions.' }; }
+      if (!hit) { if (pin) pin.setAttribute('aria-invalid', 'true'); return { error: 'We could not find "' + placeTxt + '". Choose a place from the suggestions, or open "Place not listed?" and enter its latitude, longitude and time zone.' }; }
+      lat = hit.lat; lon = hit.lon; name = hit.label || hit.name || placeTxt;
+      if (isNaN(tz)) { if (hit.tz) { zone = hit.tz; tz = tzOffset(hit.tz, dp[0], dp[1], dp[2], tp[0], tp[1]); } else tz = hit.off; }
+    }
+    if (isNaN(tz)) tz = 5.5;
+    if (pin) pin.removeAttribute('aria-invalid');
+    return { zone: zone, jd: jdFromLocal(dp[0], dp[1], dp[2], tp[0], tp[1], tz), lat: lat, lon: lon, tz: tz, place: name, date: date, time: v('tob'), y: dp[0], mo: dp[1], d: dp[2] };
   }
 
   window.CJA = {
@@ -406,7 +428,7 @@
     jdFromLocal: jdFromLocal, ayanamsa: ayanamsa, sidOf: sidOf, tropOf: tropOf, lagna: lagna, sid: sid, nakOf: nakOf, signOf: signOf, dms: dms,
     chart: chart, dashas: dashas, manglik: manglik, milan: milan, panchangAt: panchangAt, phaseName: phaseName, tithiEnd: tithiEnd, nakEnd: nakEnd,
     sunEvent: sunEvent, dayInfo: dayInfo, lunarMonth: lunarMonth, inChaturmas: inChaturmas, sadeSati: sadeSati, fmtDate: fmtDate, fmtTime: fmtTime, chartSVG: chartSVG, northSVG: northSVG,
-    ensureCities: ensureCities, findCity: findCity, readBirth: readBirth, n360: n360
+    ensureCities: ensureCities, findCity: findCity, readBirth: readBirth, tzOffset: tzOffset, n360: n360
   };
 
   // ---------- "Today" line, wherever the page has #todayDate / #todayMoon ----------

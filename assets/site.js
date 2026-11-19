@@ -73,7 +73,7 @@
           '<a href="' + consult + '" class="btn-ink hidden sm:inline-flex rounded-full px-4 py-2 text-sm font-medium">Book</a>' +
           '<button type="button" id="menuBtn" class="md:hidden btn-soft circle h-10 w-10" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">☰</button>' +
         '</div></nav>' +
-        '<div id="mobileMenu" class="mobile-menu md:hidden border-t hair gutter pb-6 max-h-[75vh] overflow-y-auto">' +
+        '<div id="mobileMenu" class="mobile-menu md:hidden border-t hair gutter">' +
           '<div class="grid grid-cols-2 gap-1 pt-3">' + toolLinks.replace(/<a /g, '<a class="block rounded-xl px-2 py-2" ') + '</div>' +
           '<div class="grid gap-1 mt-3 border-t hair pt-3 text-lg font-display">' +
             ['horoscope/|Horoscope', 'puja-booking/|Puja booking', 'about/|About Chandan', 'faq/|FAQ', 'blogs/|Journal'].map(function (x) { x = x.split('|'); return '<a class="py-2" href="' + BASE + x[0] + '">' + x[1] + '</a>'; }).join('') +
@@ -138,7 +138,8 @@
       e.preventDefault();
       var msg = f.querySelector('[role="status"]'), missing = [];
       f.querySelectorAll('[required]').forEach(function (x) { if (!String(x.value).trim()) missing.push(x.getAttribute('aria-label') || x.name); });
-      if (missing.length) { msg.style.color = 'var(--ink)'; msg.textContent = 'Please fill in: ' + missing.join(', ') + '.'; return; }
+      f.querySelectorAll('[required]').forEach(function (x) { if (!String(x.value).trim()) x.setAttribute('aria-invalid', 'true'); else x.removeAttribute('aria-invalid'); });
+      if (missing.length) { msg.style.color = 'var(--ink)'; msg.textContent = 'Please fill in: ' + missing.join(', ') + '.'; var first = f.querySelector('[aria-invalid="true"]'); if (first) first.focus(); return; }
       msg.style.color = 'var(--gilt)';
       if (!HAS) { msg.textContent = 'Thank you. Online booking opens shortly. Chandan\'s team will publish a WhatsApp number here very soon.'; return; }
       var kind = f.dataset.form, h1 = document.querySelector('h1');
@@ -165,5 +166,95 @@
     document.querySelectorAll('[data-phone-text]').forEach(function (el) { el.textContent = PHONE; });
   }
 
-  window.CJ = { BASE: BASE, reduce: reduce, consult: consult, hasContact: HAS, phone: PHONE, waLink: waLink };
+  // ---------- Place of birth search ----------
+  // Every input whose name ends in "pob" gets suggestions from assets/places.json (4,600+ places,
+  // all Indian towns to district HQ level plus world cities, from GeoNames). Choosing one stores its
+  // latitude, longitude and IANA time zone on the input (data-lat, data-lon, data-tz), which the
+  // calculators read. Nothing is sent anywhere: the list is a static file on this site.
+  var PLACES = null, placesP = null;
+  function norm(x) { return String(x || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z]/g, ''); }
+  function loadPlaces() {
+    if (placesP) return placesP;
+    placesP = fetch(BASE + 'assets/places.json').then(function (r) { return r.json(); }).then(function (d) {
+      PLACES = d.p.map(function (r) {
+        var label = r[0] + (r[1] && r[1] !== r[0] ? ', ' + r[1] : '') + ', ' + (d.country[r[2]] || r[2]);
+        return { name: r[0], label: label, lat: r[3], lon: r[4], tz: d.tz[r[5]], pop: r[6], n: norm(r[0]), a: (r[7] || []).map(norm), w: r[0].toLowerCase().split(/[\s-]+/).map(norm), rest: norm(label.slice(r[0].length)) };
+      });
+      return PLACES;
+    }).catch(function () { placesP = null; return []; });
+    return placesP;
+  }
+  function near(a, b) { // edit distance <= 1
+    if (Math.abs(a.length - b.length) > 1) return false;
+    var i = 0, j = 0, e = 0;
+    while (i < a.length && j < b.length) { if (a[i] === b[j]) { i++; j++; continue; } if (++e > 1) return false; if (a.length > b.length) i++; else if (b.length > a.length) j++; else { i++; j++; } }
+    return e + (a.length - i) + (b.length - j) <= 1;
+  }
+  function searchPlaces(text, limit) {
+    if (!PLACES) return [];
+    var parts = String(text).split(','), q = norm(parts[0]), qr = norm(parts.slice(1).join(''));
+    if (q.length < 2) return [];
+    var out = [];
+    for (var i = 0; i < PLACES.length; i++) {
+      var p = PLACES[i], s = 9;
+      if (p.n === q) s = 0;
+      else if (p.n.indexOf(q) === 0) s = 1;
+      else if (p.a.some(function (x) { return x.indexOf(q) === 0; })) s = 2;
+      else if (p.w.some(function (x) { return x.indexOf(q) === 0; })) s = 3;
+      else if (q.length >= 4 && (near(q, p.n.slice(0, q.length)) || near(q, p.n))) s = 4;
+      if (s < 9 && qr && p.rest.indexOf(qr) < 0) s = 9;
+      if (s < 9) out.push([s, -p.pop, p]);
+    }
+    out.sort(function (a, b) { return a[0] - b[0] || a[1] - b[1]; });
+    return out.slice(0, limit || 8).map(function (x) { return x[2]; });
+  }
+  var pid = 0;
+  function bindPlace(input) {
+    if (input.dataset.placeBound) return; input.dataset.placeBound = '1';
+    var wrap = document.createElement('div'); wrap.style.position = 'relative';
+    input.parentNode.insertBefore(wrap, input); wrap.appendChild(input);
+    var list = document.createElement('ul'), id = 'pl-' + (++pid), items = [], active = -1;
+    list.id = id; list.className = 'place-list'; list.setAttribute('role', 'listbox'); list.hidden = true;
+    wrap.appendChild(list);
+    input.setAttribute('role', 'combobox'); input.setAttribute('aria-autocomplete', 'list'); input.setAttribute('aria-expanded', 'false'); input.setAttribute('aria-controls', id); input.setAttribute('autocomplete', 'off');
+    function close() { list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); active = -1; }
+    function choose(p) {
+      input.value = p.label; input.dataset.lat = p.lat; input.dataset.lon = p.lon; input.dataset.tz = p.tz; input.dataset.label = p.label;
+      input.removeAttribute('aria-invalid'); close();
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+    function paint() {
+      Array.prototype.forEach.call(list.children, function (li, k) { li.setAttribute('aria-selected', String(k === active)); });
+      if (active >= 0) { input.setAttribute('aria-activedescendant', id + '-' + active); list.children[active].scrollIntoView({ block: 'nearest' }); }
+    }
+    function render() {
+      var v = input.value.trim();
+      if (input.dataset.label && v !== input.dataset.label) { delete input.dataset.lat; delete input.dataset.lon; delete input.dataset.tz; delete input.dataset.label; }
+      if (v.length < 2 || v === input.dataset.label) return close();
+      items = searchPlaces(v, 8); active = items.length ? 0 : -1;
+      list.innerHTML = items.length ? items.map(function (p, k) {
+        var c = p.label.indexOf(', ');
+        return '<li id="' + id + '-' + k + '" role="option"><span class="pl-name">' + p.name + '</span><span class="pl-rest">' + p.label.slice(c + 2) + '</span></li>';
+      }).join('') : '<li class="pl-none" aria-disabled="true">No match in our list. ' + (input.closest('form[data-tool-form]') ? 'Check the spelling, or use "Place not listed?" below.' : 'Your text will be kept as typed.') + '</li>';
+      list.hidden = false; input.setAttribute('aria-expanded', 'true'); paint();
+    }
+    input.addEventListener('focus', function () { loadPlaces(); });
+    input.addEventListener('input', function () { loadPlaces().then(render); });
+    input.addEventListener('keydown', function (e) {
+      if (list.hidden || !items.length) return;
+      if (e.key === 'ArrowDown') { e.preventDefault(); active = (active + 1) % items.length; paint(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); active = (active - 1 + items.length) % items.length; paint(); }
+      else if (e.key === 'Enter') { if (active >= 0) { e.preventDefault(); choose(items[active]); } }
+      else if (e.key === 'Escape') { close(); }
+    });
+    list.addEventListener('pointerdown', function (e) {
+      var li = e.target.closest('li[role="option"]'); if (!li) return;
+      e.preventDefault(); choose(items[Array.prototype.indexOf.call(list.children, li)]);
+    });
+    input.addEventListener('blur', function () { setTimeout(close, 120); });
+  }
+  document.querySelectorAll('input[name$="pob"]').forEach(bindPlace);
+  if (document.body.dataset.tool) loadPlaces(); // calculators can resolve a typed place without a click
+
+  window.CJ = { BASE: BASE, reduce: reduce, consult: consult, hasContact: HAS, phone: PHONE, waLink: waLink, places: { load: loadPlaces, search: searchPlaces, ready: function () { return !!PLACES; } } };
 })();

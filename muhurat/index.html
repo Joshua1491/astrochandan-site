@@ -17,7 +17,7 @@
 <body data-tool="muhurat">
 <div id="site-header"></div>
 <main>
-  <section class="relative overflow-hidden">
+  <section class="relative">
     <div class="sky" aria-hidden="true"><span class="orb a"></span><span class="orb b"></span><div class="dust absolute inset-0"></div></div>
     <div class="relative gutter mx-auto max-w-6xl pt-10 pb-16 md:pt-14 md:pb-24 grid gap-10 lg:grid-cols-[1fr_1fr] items-start">
       <div class="min-w-0">
@@ -29,7 +29,7 @@
       <div class="card rounded-[14px] p-6 md:p-8 min-w-0">
         <p class="font-display text-2xl">Occasion, month and city</p>
         <div class="mt-5"><form data-tool-form class="grid gap-3.5 sm:grid-cols-2">
-        <div class="min-w-0 sm:col-span-2"><label class="flabel" for="occasion">Occasion</label><select id="occasion" name="occasion" aria-label="Occasion" class="field rounded-[10px] px-4 py-3.5" required><option value="marriage">Marriage</option><option value="griha-pravesh">Griha Pravesh (house-warming)</option><option value="vehicle">Buying a vehicle</option><option value="property">Buying property</option><option value="business">Starting a business</option><option value="namkaran">Naming ceremony</option></select></div><div class="min-w-0"><label class="flabel" for="month">Month</label><input id="month" name="month" type="month" aria-label="Month" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0"><label class="flabel" for="pob">City</label><input id="pob" name="pob" list="cj-cities" autocomplete="off" aria-label="City" class="field px-4 py-3.5" placeholder="e.g. Gurugram">
+        <div class="min-w-0 sm:col-span-2"><label class="flabel" for="occasion">Occasion</label><select id="occasion" name="occasion" aria-label="Occasion" class="field rounded-[10px] px-4 py-3.5" required><option value="marriage">Marriage</option><option value="griha-pravesh">Griha Pravesh (house-warming)</option><option value="vehicle">Buying a vehicle</option><option value="property">Buying property</option><option value="business">Starting a business</option><option value="namkaran">Naming ceremony</option></select></div><div class="min-w-0"><label class="flabel" for="month">Month</label><input id="month" name="month" type="month" aria-label="Month" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0"><label class="flabel" for="pob">City</label><input id="pob" name="pob" autocomplete="off" aria-label="City" class="field px-4 py-3.5" placeholder="e.g. Gurugram">
           <details class="place mt-2"><summary>Place not listed? Enter coordinates</summary><div class="grid grid-cols-3 gap-2 mt-2">
             <input name="lat" inputmode="decimal" aria-label="Latitude" class="field px-3 py-2.5 text-sm" placeholder="Lat 28.46">
             <input name="lon" inputmode="decimal" aria-label="Longitude" class="field px-3 py-2.5 text-sm" placeholder="Lon 77.03">

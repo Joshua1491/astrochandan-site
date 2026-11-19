@@ -52,7 +52,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .drop-panel a { display: block; padding: 10px 12px; border-radius: 8px; }
 .drop-panel a:hover { background: var(--bg2); }
 .mobile-menu { display: none; }
-.mobile-menu.open { display: block; }
+.mobile-menu.open { display: block; max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px - env(safe-area-inset-top, 0px)); overflow-y: auto; overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch; padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 96px); }
 
 /* Ambient sky */
 .sky { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;
@@ -236,3 +237,13 @@ details.place[open] summary::before { content: "− "; }
 /* Contact switch (see CONTACT_WHATSAPP in site.js) */
 html:not(.contact-on) [data-contact-only] { display: none !important; }
 html.contact-on [data-no-contact] { display: none !important; }
+
+/* Place of birth suggestions */
+.place-list { position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 45; max-height: 288px; overflow-y: auto; margin: 0; padding: 6px; list-style: none;
+  background: var(--bg); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 24px 48px -20px color-mix(in srgb, var(--ink) 45%, transparent); }
+.place-list li { display: flex; flex-direction: column; gap: 1px; padding: 9px 12px; border-radius: 8px; cursor: pointer; }
+.place-list li[aria-selected="true"], .place-list li[role="option"]:hover { background: var(--bg2); }
+.place-list .pl-name { font-weight: 500; color: var(--ink); }
+.place-list .pl-rest { font-size: .78rem; color: var(--muted); }
+.place-list .pl-none { cursor: default; font-size: .85rem; color: var(--muted); }
+.field[aria-invalid="true"] { border-color: #b4635a; box-shadow: 0 0 0 3px color-mix(in srgb, #b4635a 18%, transparent); }

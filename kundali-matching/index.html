@@ -17,7 +17,7 @@
 <body data-tool="milan">
 <div id="site-header"></div>
 <main>
-  <section class="relative overflow-hidden">
+  <section class="relative">
     <div class="sky" aria-hidden="true"><span class="orb a"></span><span class="orb b"></span><div class="dust absolute inset-0"></div></div>
     <div class="relative gutter mx-auto max-w-6xl pt-10 pb-16 md:pt-14 md:pb-24 grid gap-10 ">
       <div class="min-w-0">
@@ -30,12 +30,12 @@
     </div>
   </section>
   <section class="gutter mx-auto max-w-6xl -mt-6 pb-10"><form data-tool-form class="grid gap-6 md:grid-cols-2">
-      <fieldset class="card rounded-[14px] p-6 md:p-7 grid gap-3.5 sm:grid-cols-2 min-w-0"><legend class="font-display text-2xl px-1">Bride</legend><div class="min-w-0"><label class="flabel" for="g-dob">Date of birth</label><input id="g-dob" name="g-dob" type="date" aria-label="Date of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0"><label class="flabel" for="g-tob">Time of birth</label><input id="g-tob" name="g-tob" type="time" aria-label="Time of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0 sm:col-span-2"><label class="flabel" for="g-pob">Place of birth</label><input id="g-pob" name="g-pob" list="cj-cities" autocomplete="off" aria-label="Place of birth" class="field px-4 py-3.5" placeholder="e.g. Gurugram">
+      <fieldset class="card rounded-[14px] p-6 md:p-7 grid gap-3.5 sm:grid-cols-2 min-w-0"><legend class="font-display text-2xl px-1">Bride</legend><div class="min-w-0"><label class="flabel" for="g-dob">Date of birth</label><input id="g-dob" name="g-dob" type="date" aria-label="Date of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0"><label class="flabel" for="g-tob">Time of birth</label><input id="g-tob" name="g-tob" type="time" aria-label="Time of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0 sm:col-span-2"><label class="flabel" for="g-pob">Place of birth</label><input id="g-pob" name="g-pob" autocomplete="off" aria-label="Place of birth" class="field px-4 py-3.5" placeholder="e.g. Gurugram">
           <details class="place mt-2"><summary>Place not listed? Enter coordinates</summary><div class="grid grid-cols-3 gap-2 mt-2">
             <input name="g-lat" inputmode="decimal" aria-label="Latitude" class="field px-3 py-2.5 text-sm" placeholder="Lat 28.46">
             <input name="g-lon" inputmode="decimal" aria-label="Longitude" class="field px-3 py-2.5 text-sm" placeholder="Lon 77.03">
             <input name="g-tz" inputmode="decimal" aria-label="UTC offset in hours" class="field px-3 py-2.5 text-sm" placeholder="UTC +5.5"></div></details></div></fieldset>
-      <fieldset class="card rounded-[14px] p-6 md:p-7 grid gap-3.5 sm:grid-cols-2 min-w-0"><legend class="font-display text-2xl px-1">Groom</legend><div class="min-w-0"><label class="flabel" for="b-dob">Date of birth</label><input id="b-dob" name="b-dob" type="date" aria-label="Date of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0"><label class="flabel" for="b-tob">Time of birth</label><input id="b-tob" name="b-tob" type="time" aria-label="Time of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0 sm:col-span-2"><label class="flabel" for="b-pob">Place of birth</label><input id="b-pob" name="b-pob" list="cj-cities" autocomplete="off" aria-label="Place of birth" class="field px-4 py-3.5" placeholder="e.g. Gurugram">
+      <fieldset class="card rounded-[14px] p-6 md:p-7 grid gap-3.5 sm:grid-cols-2 min-w-0"><legend class="font-display text-2xl px-1">Groom</legend><div class="min-w-0"><label class="flabel" for="b-dob">Date of birth</label><input id="b-dob" name="b-dob" type="date" aria-label="Date of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0"><label class="flabel" for="b-tob">Time of birth</label><input id="b-tob" name="b-tob" type="time" aria-label="Time of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0 sm:col-span-2"><label class="flabel" for="b-pob">Place of birth</label><input id="b-pob" name="b-pob" autocomplete="off" aria-label="Place of birth" class="field px-4 py-3.5" placeholder="e.g. Gurugram">
           <details class="place mt-2"><summary>Place not listed? Enter coordinates</summary><div class="grid grid-cols-3 gap-2 mt-2">
             <input name="b-lat" inputmode="decimal" aria-label="Latitude" class="field px-3 py-2.5 text-sm" placeholder="Lat 28.46">
             <input name="b-lon" inputmode="decimal" aria-label="Longitude" class="field px-3 py-2.5 text-sm" placeholder="Lon 77.03">

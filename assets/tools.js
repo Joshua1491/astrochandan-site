@@ -154,6 +154,9 @@
   function placeFrom(f) {
     var q = (f.querySelector('[name="pob"]') || {}).value, lat = parseFloat((f.querySelector('[name="lat"]') || {}).value), lon = parseFloat((f.querySelector('[name="lon"]') || {}).value), tz = parseFloat((f.querySelector('[name="tz"]') || {}).value);
     if (!isNaN(lat) && !isNaN(lon)) return { lat: lat, lon: lon, tz: isNaN(tz) ? 5.5 : tz, name: q || 'Custom place' };
+    var pin = f.querySelector('[name="pob"]'), d = (f.querySelector('[name="date"]') || {}).value || new Date().toISOString().slice(0, 10), dp = d.split('-').map(Number);
+    var hit = pin && pin.dataset.lat ? { lat: +pin.dataset.lat, lon: +pin.dataset.lon, tz: pin.dataset.tz, label: pin.dataset.label } : (q && window.CJ && CJ.places.ready() ? CJ.places.search(q, 1)[0] : null);
+    if (hit) return { lat: hit.lat, lon: hit.lon, tz: isNaN(tz) ? A.tzOffset(hit.tz, dp[0], dp[1], dp[2], 12, 0) : tz, name: hit.label };
     var c = A.findCity(q || 'Gurugram'); if (!c) return null;
     return { lat: c[1], lon: c[2], tz: isNaN(tz) ? c[3] : tz, name: c[0] };
   }

@@ -17,7 +17,7 @@
 <body data-tool="baby-names">
 <div id="site-header"></div>
 <main>
-  <section class="relative overflow-hidden">
+  <section class="relative">
     <div class="sky" aria-hidden="true"><span class="orb a"></span><span class="orb b"></span><div class="dust absolute inset-0"></div></div>
     <div class="relative gutter mx-auto max-w-6xl pt-10 pb-16 md:pt-14 md:pb-24 grid gap-10 lg:grid-cols-[1fr_1fr] items-start">
       <div class="min-w-0">
@@ -36,7 +36,7 @@
       </form>
       <details class="place mt-6"><summary>Don't know the Nakshatra? Work it out from the birth details</summary>
         <div class="mt-4"><form data-tool-form="birth" class="grid gap-3.5 sm:grid-cols-2">
-        <div class="min-w-0"><label class="flabel" for="dob">Date of birth</label><input id="dob" name="dob" type="date" aria-label="Date of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0"><label class="flabel" for="tob">Time of birth</label><input id="tob" name="tob" type="time" aria-label="Time of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0 sm:col-span-2"><label class="flabel" for="pob">Place of birth</label><input id="pob" name="pob" list="cj-cities" autocomplete="off" aria-label="Place of birth" class="field px-4 py-3.5" placeholder="e.g. Gurugram">
+        <div class="min-w-0"><label class="flabel" for="dob">Date of birth</label><input id="dob" name="dob" type="date" aria-label="Date of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0"><label class="flabel" for="tob">Time of birth</label><input id="tob" name="tob" type="time" aria-label="Time of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0 sm:col-span-2"><label class="flabel" for="pob">Place of birth</label><input id="pob" name="pob" autocomplete="off" aria-label="Place of birth" class="field px-4 py-3.5" placeholder="e.g. Gurugram">
           <details class="place mt-2"><summary>Place not listed? Enter coordinates</summary><div class="grid grid-cols-3 gap-2 mt-2">
             <input name="lat" inputmode="decimal" aria-label="Latitude" class="field px-3 py-2.5 text-sm" placeholder="Lat 28.46">
             <input name="lon" inputmode="decimal" aria-label="Longitude" class="field px-3 py-2.5 text-sm" placeholder="Lon 77.03">
