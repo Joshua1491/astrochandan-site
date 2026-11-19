@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="sandstone">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Janam Kundli | Chandan Shrivastava, Vedic Astrologer</title>
+<meta name="description" content="Make your free Janam Kundli: Lagna chart, planet positions, Navamsa and Vimshottari Dasha, cast with Lahiri ayanamsa.">
+<meta name="theme-color" content="#1f2a3a">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Cinzel:wght@400;500;600&family=Outfit:wght@300;400;500;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<script src="../assets/tw.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/tw.css">
+</head>
+<body data-tool="kundli">
+<div id="site-header"></div>
+<main>
+  <section class="relative overflow-hidden">
+    <div class="sky" aria-hidden="true"><span class="orb a"></span><span class="orb b"></span><div class="dust absolute inset-0"></div></div>
+    <div class="relative gutter mx-auto max-w-6xl pt-10 pb-16 md:pt-14 md:pb-24 grid gap-10 lg:grid-cols-[1fr_1fr] items-start">
+      <div class="min-w-0">
+        <nav class="text-xs muted" aria-label="Breadcrumb"><a class="hover:opacity-70" href="../">Home</a> <span aria-hidden="true">/</span> <a class="hover:opacity-70" href="../free-tools/">Free tools</a> <span aria-hidden="true">/</span> <span aria-current="page">Janam Kundli</span></nav>
+        <p class="label gilt mt-8">Free tool</p>
+        <h1 class="font-display mt-3 text-[2.6rem] leading-[1.04] sm:text-6xl tracking-tight">Janam Kundli</h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed muted">Your birth chart, drawn for the exact minute and place you were born. See your Lagna, where each planet sits, your birth Nakshatra and the Dasha you are living through now.</p>
+      </div>
+      <div class="card rounded-[14px] p-6 md:p-8 min-w-0">
+        <p class="font-display text-2xl">Cast your Kundli</p>
+        <p class="text-sm muted mt-1">Lahiri ayanamsa · North Indian chart</p>
+        <div class="mt-6"><form data-tool-form class="grid gap-3.5 sm:grid-cols-2">
+        <div class="min-w-0 sm:col-span-2"><label class="flabel" for="name">Name <span class="opacity-70">(optional)</span></label><input id="name" name="name" type="text" aria-label="Name" class="field rounded-[10px] px-4 py-3.5"></div><div class="min-w-0"><label class="flabel" for="dob">Date of birth</label><input id="dob" name="dob" type="date" aria-label="Date of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0"><label class="flabel" for="tob">Time of birth</label><input id="tob" name="tob" type="time" aria-label="Time of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0 sm:col-span-2"><label class="flabel" for="pob">Place of birth</label><input id="pob" name="pob" list="cj-cities" autocomplete="off" aria-label="Place of birth" class="field px-4 py-3.5" placeholder="e.g. Gurugram">
+          <details class="place mt-2"><summary>Place not listed? Enter coordinates</summary><div class="grid grid-cols-3 gap-2 mt-2">
+            <input name="lat" inputmode="decimal" aria-label="Latitude" class="field px-3 py-2.5 text-sm" placeholder="Lat 28.46">
+            <input name="lon" inputmode="decimal" aria-label="Longitude" class="field px-3 py-2.5 text-sm" placeholder="Lon 77.03">
+            <input name="tz" inputmode="decimal" aria-label="UTC offset in hours" class="field px-3 py-2.5 text-sm" placeholder="UTC +5.5"></div></details></div>
+        <div class="sm:col-span-2 flex flex-wrap gap-3"><button class="btn-ink px-7 py-3.5 font-medium">Show my Kundli</button><button type="button" data-sample class="btn-soft px-5 py-3.5 font-medium">Use sample details</button></div>
+        <p role="status" class="sm:col-span-2 text-sm min-h-[1.25rem]"></p>
+      </form></div>
+        <p class="text-xs muted mt-2">Calculated in your browser with standard astronomical formulas and the Lahiri ayanamsa. Nothing you enter is sent anywhere.</p>
+      </div>
+    </div>
+  </section>
+  <section class="gutter mx-auto max-w-6xl pb-20" aria-live="polite"><div id="result"></div></section>
+  <section class="bg2"><div class="gutter mx-auto max-w-6xl py-20 md:py-24 grid gap-12 lg:grid-cols-[1fr_1fr] items-center">
+    <div class="reveal">
+      <p class="label gilt">What you will see</p>
+      <h2 class="font-display text-4xl md:text-5xl mt-3 leading-tight">What your Kundli shows.</h2>
+      <ol class="mt-8 space-y-5">
+        <li class="flex gap-4"><span class="step-num">1</span><div><p class="font-medium">Lagna chart (D1)</p><p class="text-sm muted mt-1">The twelve houses, your rising sign, and which planet sits where.</p></div></li>
+        <li class="flex gap-4"><span class="step-num">2</span><div><p class="font-medium">Planet positions</p><p class="text-sm muted mt-1">Sign, degree, Nakshatra and pada for all nine grahas, with retrograde marked.</p></div></li>
+        <li class="flex gap-4"><span class="step-num">3</span><div><p class="font-medium">Navamsa (D9)</p><p class="text-sm muted mt-1">The chart astrologers turn to for marriage and the deeper strength of each planet.</p></div></li>
+        <li class="flex gap-4"><span class="step-num">4</span><div><p class="font-medium">Vimshottari Dasha</p><p class="text-sm muted mt-1">Your planetary periods with start and end dates, so you can see which chapter you are in.</p></div></li>
+      </ol>
+    </div>
+    <figure class="card rounded-[14px] p-6 md:p-8 reveal">
+      <svg viewBox="0 0 300 300" class="w-full max-w-[340px] mx-auto" aria-label="North Indian chart layout, houses 1 to 12">
+  <g style="fill:none;stroke:var(--gilt)" stroke-width="1.2">
+    <rect x="4" y="4" width="292" height="292" rx="4"/><path d="M4 4L296 296M296 4L4 296M150 4L296 150L150 296L4 150Z"/>
+  </g>
+  <g style="fill:var(--muted)" font-family="Cinzel, serif" font-size="11" text-anchor="middle">
+    <text x="150" y="80">1</text><text x="80" y="40">2</text><text x="40" y="80">3</text><text x="80" y="155">4</text>
+    <text x="40" y="225">5</text><text x="80" y="265">6</text><text x="150" y="225">7</text><text x="220" y="265">8</text>
+    <text x="260" y="225">9</text><text x="220" y="155">10</text><text x="260" y="80">11</text><text x="220" y="40">12</text>
+  </g>
+  <text x="150" y="100" text-anchor="middle" font-family="Outfit, sans-serif" font-size="9" style="fill:var(--gilt)">LAGNA</text>
+</svg>
+      <figcaption class="text-center text-sm muted mt-4">Layout of a North Indian chart. Your planets fill these houses.</figcaption>
+    </figure>
+  </div></section>
+  <section class="gutter mx-auto max-w-4xl py-20 md:py-24">
+    <p class="label gilt text-center reveal">Kundli questions</p>
+    <h2 class="font-display text-4xl md:text-5xl mt-3 text-center reveal">Before you begin</h2>
+    <div class="mt-10 space-y-3">
+<details class="faq card rounded-[14px] p-5 md:p-6 reveal" open><summary class="flex items-start justify-between gap-4"><span class="font-display text-xl md:text-2xl">How accurate does my birth time need to be?</span><span class="plus gilt text-2xl leading-none">+</span></summary><p class="mt-4 muted leading-relaxed">As close as you can get it. The Lagna changes roughly every two hours and the Navamsa every 10 to 15 minutes. A birth certificate or hospital record is best. If you are unsure, Chandan can rectify the time in a consultation.</p></details>
+<details class="faq card rounded-[14px] p-5 md:p-6 reveal"><summary class="flex items-start justify-between gap-4"><span class="font-display text-xl md:text-2xl">Which ayanamsa is used?</span><span class="plus gilt text-2xl leading-none">+</span></summary><p class="mt-4 muted leading-relaxed">Lahiri (Chitrapaksha), the standard used by the Indian government's calendar and by most Vedic astrologers in India.</p></details>
+<details class="faq card rounded-[14px] p-5 md:p-6 reveal"><summary class="flex items-start justify-between gap-4"><span class="font-display text-xl md:text-2xl">North or South Indian chart?</span><span class="plus gilt text-2xl leading-none">+</span></summary><p class="mt-4 muted leading-relaxed">The chart is drawn in the North Indian style, with the houses fixed and the signs moving. The calculation is the same either way.</p></details>
+<details class="faq card rounded-[14px] p-5 md:p-6 reveal"><summary class="flex items-start justify-between gap-4"><span class="font-display text-xl md:text-2xl">Is my birth data stored?</span><span class="plus gilt text-2xl leading-none">+</span></summary><p class="mt-4 muted leading-relaxed">No. The calculation runs inside your own browser and nothing you type is sent to us. See the privacy policy for how consultation details are handled.</p></details>
+<details class="faq card rounded-[14px] p-5 md:p-6 reveal"><summary class="flex items-start justify-between gap-4"><span class="font-display text-xl md:text-2xl">How accurate is the free calculation?</span><span class="plus gilt text-2xl leading-none">+</span></summary><p class="mt-4 muted leading-relaxed">Planet positions are computed with standard astronomical formulas and are accurate to within about a degree (the Sun and Moon to a few arc-minutes), which is enough for signs, Nakshatras and Dashas. If a planet or your Lagna sits right on a boundary, Chandan double-checks it with a full ephemeris in a consultation.</p></details>
+    </div>
+  </section>
+  <section class="gutter mx-auto max-w-5xl py-20 md:py-24">
+    <div class="relative overflow-hidden rounded-[16px] card p-8 md:p-12 text-center reveal">
+      <div class="sky opacity-60" aria-hidden="true"><span class="orb a" style="left:-20%;top:-40%"></span><span class="orb b" style="right:-20%;top:auto;bottom:-40%"></span></div>
+      <div class="relative">
+        <h2 class="font-display text-4xl md:text-5xl leading-tight">Want this read for you?</h2>
+        <p class="mt-4 muted max-w-xl mx-auto leading-relaxed">A free tool shows the chart. Chandan reads it with you: what it means for your question, and what to do next.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="../#consult" class="btn-ink px-7 py-3.5 font-medium">Book a consultation</a>
+          <a data-wa="Namaste, I have a question for Chandan ji." data-on="Ask on WhatsApp" href="../#ask" class="btn-soft px-7 py-3.5 font-medium">Ask a question</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="../assets/site.js"></script>
+<script src="../assets/astro.js"></script>
+<script src="../assets/tools.js"></script>
+</body>
+</html>

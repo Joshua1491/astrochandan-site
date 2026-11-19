@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="sandstone">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Baby names by Nakshatra | Chandan Shrivastava, Vedic Astrologer</title>
+<meta name="description" content="Find baby names by Nakshatra and pada syllable, with meanings, or work out the birth Nakshatra from date, time and place.">
+<meta name="theme-color" content="#1f2a3a">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Cinzel:wght@400;500;600&family=Outfit:wght@300;400;500;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<script src="../assets/tw.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/tw.css">
+</head>
+<body data-tool="baby-names">
+<div id="site-header"></div>
+<main>
+  <section class="relative overflow-hidden">
+    <div class="sky" aria-hidden="true"><span class="orb a"></span><span class="orb b"></span><div class="dust absolute inset-0"></div></div>
+    <div class="relative gutter mx-auto max-w-6xl pt-10 pb-16 md:pt-14 md:pb-24 grid gap-10 lg:grid-cols-[1fr_1fr] items-start">
+      <div class="min-w-0">
+        <nav class="text-xs muted" aria-label="Breadcrumb"><a class="hover:opacity-70" href="../">Home</a> <span aria-hidden="true">/</span> <a class="hover:opacity-70" href="../free-tools/">Free tools</a> <span aria-hidden="true">/</span> <span aria-current="page">Baby names by Nakshatra</span></nav>
+        <p class="label gilt mt-8">Free tool</p>
+        <h1 class="font-display mt-3 text-[2.6rem] leading-[1.04] sm:text-6xl tracking-tight">Baby names by Nakshatra</h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed muted">In the naming tradition, a child's name begins with the syllable of the pada of their birth Nakshatra. Pick the Nakshatra, or work it out from the birth details, and see names that fit.</p>
+      </div>
+      <div class="card rounded-[14px] p-6 md:p-8 min-w-0">
+        <p class="font-display text-2xl">Choose the birth star</p>
+        <div class="mt-5"><form data-tool-form class="grid gap-3.5 sm:grid-cols-2">
+        <div class="min-w-0"><label class="flabel" for="nak">Nakshatra</label><select id="nak" name="nak" class="field px-4 py-3.5"><option value="0">Ashwini</option><option value="1">Bharani</option><option value="2">Krittika</option><option value="3">Rohini</option><option value="4">Mrigashira</option><option value="5">Ardra</option><option value="6">Punarvasu</option><option value="7">Pushya</option><option value="8">Ashlesha</option><option value="9">Magha</option><option value="10">Purva Phalguni</option><option value="11">Uttara Phalguni</option><option value="12">Hasta</option><option value="13">Chitra</option><option value="14">Swati</option><option value="15">Vishakha</option><option value="16">Anuradha</option><option value="17">Jyeshtha</option><option value="18">Mula</option><option value="19">Purva Ashadha</option><option value="20">Uttara Ashadha</option><option value="21">Shravana</option><option value="22">Dhanishta</option><option value="23">Shatabhisha</option><option value="24">Purva Bhadrapada</option><option value="25">Uttara Bhadrapada</option><option value="26">Revati</option></select></div>
+        <div class="min-w-0"><label class="flabel" for="pada">Pada</label><select id="pada" name="pada" class="field px-4 py-3.5"><option value="">All four</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+        <div class="min-w-0 sm:col-span-2"><label class="flabel" for="gender">For a</label><select id="gender" name="gender" class="field px-4 py-3.5"><option value="any">Boy or girl</option><option value="b">Boy</option><option value="g">Girl</option></select></div>
+        <div class="sm:col-span-2"><button class="btn-ink px-7 py-3.5 font-medium">Show names</button></div>
+      </form>
+      <details class="place mt-6"><summary>Don't know the Nakshatra? Work it out from the birth details</summary>
+        <div class="mt-4"><form data-tool-form="birth" class="grid gap-3.5 sm:grid-cols-2">
+        <div class="min-w-0"><label class="flabel" for="dob">Date of birth</label><input id="dob" name="dob" type="date" aria-label="Date of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0"><label class="flabel" for="tob">Time of birth</label><input id="tob" name="tob" type="time" aria-label="Time of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0 sm:col-span-2"><label class="flabel" for="pob">Place of birth</label><input id="pob" name="pob" list="cj-cities" autocomplete="off" aria-label="Place of birth" class="field px-4 py-3.5" placeholder="e.g. Gurugram">
+          <details class="place mt-2"><summary>Place not listed? Enter coordinates</summary><div class="grid grid-cols-3 gap-2 mt-2">
+            <input name="lat" inputmode="decimal" aria-label="Latitude" class="field px-3 py-2.5 text-sm" placeholder="Lat 28.46">
+            <input name="lon" inputmode="decimal" aria-label="Longitude" class="field px-3 py-2.5 text-sm" placeholder="Lon 77.03">
+            <input name="tz" inputmode="decimal" aria-label="UTC offset in hours" class="field px-3 py-2.5 text-sm" placeholder="UTC +5.5"></div></details></div>
+        <div class="sm:col-span-2 flex flex-wrap gap-3"><button class="btn-ink px-7 py-3.5 font-medium">Find the Nakshatra</button></div>
+        <p role="status" class="sm:col-span-2 text-sm min-h-[1.25rem]"></p>
+      </form></div></details></div>
+        <p class="text-xs muted mt-2">Calculated in your browser with standard astronomical formulas and the Lahiri ayanamsa. Nothing you enter is sent anywhere.</p>
+      </div>
+    </div>
+  </section>
+  <section class="gutter mx-auto max-w-6xl pb-20" aria-live="polite"><div id="result" hidden></div></section>
+  <section class="bg2"><div class="gutter mx-auto max-w-6xl py-20 md:py-24 grid gap-12 ">
+    <div class="reveal max-w-2xl"><p class="label gilt">Namkaran</p><h2 class="font-display text-4xl md:text-5xl mt-3 leading-tight">A name that begins with the birth star.</h2><p class="mt-4 muted leading-relaxed">Each of the 27 Nakshatras has four padas, and each pada is linked to a sound: Chu, Che, Cho and La for Ashwini, for example. The custom is to begin the child's name with the sound of their pada, or at least one from their Nakshatra.</p><p class="mt-4 muted leading-relaxed">The list here is short and chosen for clear meanings. Many families also use the syllable for a pet name and choose the formal name freely. The <a class="underline" href="../nakshatra/">Nakshatra page</a> lists the syllables for all 27.</p></div>
+    
+  </div></section>
+  <section class="gutter mx-auto max-w-5xl py-20 md:py-24">
+    <div class="relative overflow-hidden rounded-[16px] card p-8 md:p-12 text-center reveal">
+      <div class="sky opacity-60" aria-hidden="true"><span class="orb a" style="left:-20%;top:-40%"></span><span class="orb b" style="right:-20%;top:auto;bottom:-40%"></span></div>
+      <div class="relative">
+        <h2 class="font-display text-4xl md:text-5xl leading-tight">Want this read for you?</h2>
+        <p class="mt-4 muted max-w-xl mx-auto leading-relaxed">A free tool shows the chart. Chandan reads it with you: what it means for your question, and what to do next.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="../#consult" class="btn-ink px-7 py-3.5 font-medium">Book a consultation</a>
+          <a data-wa="Namaste, I have a question for Chandan ji." data-on="Ask on WhatsApp" href="../#ask" class="btn-soft px-7 py-3.5 font-medium">Ask a question</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="../assets/site.js"></script>
+<script src="../assets/astro.js"></script>
+<script src="../assets/tools.js"></script>
+</body>
+</html>

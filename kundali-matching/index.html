@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="sandstone">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kundli Milan (Marriage Matching) | Chandan Shrivastava, Vedic Astrologer</title>
+<meta name="description" content="Free Kundli Milan: Ashtakoot guna matching out of 36 with a Mangal dosha check, explained in plain language.">
+<meta name="theme-color" content="#1f2a3a">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Cinzel:wght@400;500;600&family=Outfit:wght@300;400;500;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<script src="../assets/tw.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/tw.css">
+</head>
+<body data-tool="milan">
+<div id="site-header"></div>
+<main>
+  <section class="relative overflow-hidden">
+    <div class="sky" aria-hidden="true"><span class="orb a"></span><span class="orb b"></span><div class="dust absolute inset-0"></div></div>
+    <div class="relative gutter mx-auto max-w-6xl pt-10 pb-16 md:pt-14 md:pb-24 grid gap-10 ">
+      <div class="min-w-0">
+        <nav class="text-xs muted" aria-label="Breadcrumb"><a class="hover:opacity-70" href="../">Home</a> <span aria-hidden="true">/</span> <a class="hover:opacity-70" href="../free-tools/">Free tools</a> <span aria-hidden="true">/</span> <span aria-current="page">Kundli Milan</span></nav>
+        <p class="label gilt mt-8">Free tool</p>
+        <h1 class="font-display mt-3 text-[2.6rem] leading-[1.04] sm:text-6xl tracking-tight">Kundli Milan</h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed muted">Compare two birth charts with the classical eight-koota method, scored out of 36, with a Mangal dosha check for both. A useful first look before a family conversation.</p>
+      </div>
+
+    </div>
+  </section>
+  <section class="gutter mx-auto max-w-6xl -mt-6 pb-10"><form data-tool-form class="grid gap-6 md:grid-cols-2">
+      <fieldset class="card rounded-[14px] p-6 md:p-7 grid gap-3.5 sm:grid-cols-2 min-w-0"><legend class="font-display text-2xl px-1">Bride</legend><div class="min-w-0"><label class="flabel" for="g-dob">Date of birth</label><input id="g-dob" name="g-dob" type="date" aria-label="Date of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0"><label class="flabel" for="g-tob">Time of birth</label><input id="g-tob" name="g-tob" type="time" aria-label="Time of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0 sm:col-span-2"><label class="flabel" for="g-pob">Place of birth</label><input id="g-pob" name="g-pob" list="cj-cities" autocomplete="off" aria-label="Place of birth" class="field px-4 py-3.5" placeholder="e.g. Gurugram">
+          <details class="place mt-2"><summary>Place not listed? Enter coordinates</summary><div class="grid grid-cols-3 gap-2 mt-2">
+            <input name="g-lat" inputmode="decimal" aria-label="Latitude" class="field px-3 py-2.5 text-sm" placeholder="Lat 28.46">
+            <input name="g-lon" inputmode="decimal" aria-label="Longitude" class="field px-3 py-2.5 text-sm" placeholder="Lon 77.03">
+            <input name="g-tz" inputmode="decimal" aria-label="UTC offset in hours" class="field px-3 py-2.5 text-sm" placeholder="UTC +5.5"></div></details></div></fieldset>
+      <fieldset class="card rounded-[14px] p-6 md:p-7 grid gap-3.5 sm:grid-cols-2 min-w-0"><legend class="font-display text-2xl px-1">Groom</legend><div class="min-w-0"><label class="flabel" for="b-dob">Date of birth</label><input id="b-dob" name="b-dob" type="date" aria-label="Date of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0"><label class="flabel" for="b-tob">Time of birth</label><input id="b-tob" name="b-tob" type="time" aria-label="Time of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0 sm:col-span-2"><label class="flabel" for="b-pob">Place of birth</label><input id="b-pob" name="b-pob" list="cj-cities" autocomplete="off" aria-label="Place of birth" class="field px-4 py-3.5" placeholder="e.g. Gurugram">
+          <details class="place mt-2"><summary>Place not listed? Enter coordinates</summary><div class="grid grid-cols-3 gap-2 mt-2">
+            <input name="b-lat" inputmode="decimal" aria-label="Latitude" class="field px-3 py-2.5 text-sm" placeholder="Lat 28.46">
+            <input name="b-lon" inputmode="decimal" aria-label="Longitude" class="field px-3 py-2.5 text-sm" placeholder="Lon 77.03">
+            <input name="b-tz" inputmode="decimal" aria-label="UTC offset in hours" class="field px-3 py-2.5 text-sm" placeholder="UTC +5.5"></div></details></div></fieldset>
+      <div class="md:col-span-2 flex flex-wrap gap-3 justify-center"><button class="btn-ink px-10 py-4 font-medium">Match the two charts</button><button type="button" data-sample class="btn-soft px-6 py-4 font-medium">Use sample details</button></div>
+      <p role="status" class="md:col-span-2 text-center text-sm min-h-[1.25rem]"></p>
+    </form>
+    <p class="text-xs muted text-center">Calculated in your browser with standard astronomical formulas and the Lahiri ayanamsa. Nothing you enter is sent anywhere.</p></section>
+  <section class="gutter mx-auto max-w-6xl pb-20" aria-live="polite"><div id="result"></div></section>
+  <section class="bg2"><div class="gutter mx-auto max-w-6xl py-20 md:py-24 grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+    <div class="reveal">
+      <p class="label gilt">How the score works</p>
+      <h2 class="font-display text-4xl md:text-5xl mt-3 leading-tight">Eight kootas, 36 gunas.</h2>
+      <p class="mt-5 muted leading-relaxed">Each koota compares one aspect of the two Moon signs and birth stars. Their points add up to a total out of 36.</p>
+      <div class="mt-8 grid grid-cols-3 gap-3 text-center">
+        <div class="card rounded-[10px] p-4"><p class="font-display text-3xl">&lt; 18</p><p class="text-xs muted mt-1">Usually not advised</p></div>
+        <div class="card rounded-[10px] p-4"><p class="font-display text-3xl">18–24</p><p class="text-xs muted mt-1">Acceptable</p></div>
+        <div class="card rounded-[10px] p-4"><p class="font-display text-3xl">25+</p><p class="text-xs muted mt-1">Good to excellent</p></div>
+      </div>
+      <p class="mt-6 text-sm muted leading-relaxed">The score is a starting point, not a verdict. A full match also weighs Mangal dosha, both seventh houses, the Navamsa and the Dashas each person will run after marriage.</p>
+    </div>
+    <div class="card rounded-[14px] p-6 md:p-8 reveal overflow-x-auto">
+      <table class="w-full text-sm"><thead><tr class="text-left label muted text-[0.6rem]"><th class="pb-3">Koota</th><th class="pb-3">What it compares</th><th class="pb-3 text-right">Points</th></tr></thead>
+      <tbody><tr class="border-t hair"><td class="py-3.5 pr-4 font-medium">Varna</td><td class="py-3.5 pr-4 muted">Temperament and spiritual outlook</td><td class="py-3.5 text-right font-display text-xl gilt">1</td></tr><tr class="border-t hair"><td class="py-3.5 pr-4 font-medium">Vashya</td><td class="py-3.5 pr-4 muted">Natural pull and influence between the two</td><td class="py-3.5 text-right font-display text-xl gilt">2</td></tr><tr class="border-t hair"><td class="py-3.5 pr-4 font-medium">Tara</td><td class="py-3.5 pr-4 muted">Birth-star harmony and wellbeing</td><td class="py-3.5 text-right font-display text-xl gilt">3</td></tr><tr class="border-t hair"><td class="py-3.5 pr-4 font-medium">Yoni</td><td class="py-3.5 pr-4 muted">Physical and instinctive compatibility</td><td class="py-3.5 text-right font-display text-xl gilt">4</td></tr><tr class="border-t hair"><td class="py-3.5 pr-4 font-medium">Graha Maitri</td><td class="py-3.5 pr-4 muted">Friendship between the Moon-sign lords</td><td class="py-3.5 text-right font-display text-xl gilt">5</td></tr><tr class="border-t hair"><td class="py-3.5 pr-4 font-medium">Gana</td><td class="py-3.5 pr-4 muted">Nature: divine, human or fierce</td><td class="py-3.5 text-right font-display text-xl gilt">6</td></tr><tr class="border-t hair"><td class="py-3.5 pr-4 font-medium">Bhakoot</td><td class="py-3.5 pr-4 muted">Moon-sign placement: family, money, wellbeing</td><td class="py-3.5 text-right font-display text-xl gilt">7</td></tr><tr class="border-t hair"><td class="py-3.5 pr-4 font-medium">Nadi</td><td class="py-3.5 pr-4 muted">Health and progeny</td><td class="py-3.5 text-right font-display text-xl gilt">8</td></tr><tr class="border-t hair"><td class="pt-4 font-medium" colspan="2">Total</td><td class="pt-4 text-right font-display text-2xl">36</td></tr></tbody></table>
+    </div>
+  </div></section>
+  <section class="gutter mx-auto max-w-5xl py-20 md:py-24">
+    <div class="relative overflow-hidden rounded-[16px] card p-8 md:p-12 text-center reveal">
+      <div class="sky opacity-60" aria-hidden="true"><span class="orb a" style="left:-20%;top:-40%"></span><span class="orb b" style="right:-20%;top:auto;bottom:-40%"></span></div>
+      <div class="relative">
+        <h2 class="font-display text-4xl md:text-5xl leading-tight">Read the whole match, not just the number.</h2>
+        <p class="mt-4 muted max-w-xl mx-auto leading-relaxed">Chandan looks at both charts together and tells you plainly what will be easy, what will need work, and whether any dosha is actually cancelled.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="../#consult" class="btn-ink px-7 py-3.5 font-medium">Book a consultation</a>
+          <a data-wa="Namaste, I have a question for Chandan ji." data-on="Ask on WhatsApp" href="../#ask" class="btn-soft px-7 py-3.5 font-medium">Ask a question</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="../assets/site.js"></script>
+<script src="../assets/astro.js"></script>
+<script src="../assets/tools.js"></script>
+</body>
+</html>

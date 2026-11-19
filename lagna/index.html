@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="sandstone">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lagna calculator | Chandan Shrivastava, Vedic Astrologer</title>
+<meta name="description" content="Calculate your Vedic Lagna (ascendant) and Lagna lord from your birth time and place, with Lahiri ayanamsa.">
+<meta name="theme-color" content="#1f2a3a">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Cinzel:wght@400;500;600&family=Outfit:wght@300;400;500;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<script src="../assets/tw.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/tw.css">
+</head>
+<body data-tool="lagna">
+<div id="site-header"></div>
+<main>
+  <section class="relative overflow-hidden">
+    <div class="sky" aria-hidden="true"><span class="orb a"></span><span class="orb b"></span><div class="dust absolute inset-0"></div></div>
+    <div class="relative gutter mx-auto max-w-6xl pt-10 pb-16 md:pt-14 md:pb-24 grid gap-10 lg:grid-cols-[1fr_1fr] items-start">
+      <div class="min-w-0">
+        <nav class="text-xs muted" aria-label="Breadcrumb"><a class="hover:opacity-70" href="../">Home</a> <span aria-hidden="true">/</span> <a class="hover:opacity-70" href="../free-tools/">Free tools</a> <span aria-hidden="true">/</span> <span aria-current="page">Lagna calculator</span></nav>
+        <p class="label gilt mt-8">Free tool</p>
+        <h1 class="font-display mt-3 text-[2.6rem] leading-[1.04] sm:text-6xl tracking-tight">Lagna calculator</h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed muted">Your Lagna, or ascendant, is the sign rising on the eastern horizon at the minute you were born. It sets the twelve houses of your chart, so it needs an accurate birth time.</p>
+      </div>
+      <div class="card rounded-[14px] p-6 md:p-8 min-w-0">
+        <p class="font-display text-2xl">Your birth details</p>
+        <div class="mt-5"><form data-tool-form class="grid gap-3.5 sm:grid-cols-2">
+        <div class="min-w-0"><label class="flabel" for="dob">Date of birth</label><input id="dob" name="dob" type="date" aria-label="Date of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0"><label class="flabel" for="tob">Time of birth</label><input id="tob" name="tob" type="time" aria-label="Time of birth" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0 sm:col-span-2"><label class="flabel" for="pob">Place of birth</label><input id="pob" name="pob" list="cj-cities" autocomplete="off" aria-label="Place of birth" class="field px-4 py-3.5" placeholder="e.g. Gurugram">
+          <details class="place mt-2"><summary>Place not listed? Enter coordinates</summary><div class="grid grid-cols-3 gap-2 mt-2">
+            <input name="lat" inputmode="decimal" aria-label="Latitude" class="field px-3 py-2.5 text-sm" placeholder="Lat 28.46">
+            <input name="lon" inputmode="decimal" aria-label="Longitude" class="field px-3 py-2.5 text-sm" placeholder="Lon 77.03">
+            <input name="tz" inputmode="decimal" aria-label="UTC offset in hours" class="field px-3 py-2.5 text-sm" placeholder="UTC +5.5"></div></details></div>
+        <div class="sm:col-span-2 flex flex-wrap gap-3"><button class="btn-ink px-7 py-3.5 font-medium">Find my Lagna</button><button type="button" data-sample class="btn-soft px-5 py-3.5 font-medium">Use sample details</button></div>
+        <p role="status" class="sm:col-span-2 text-sm min-h-[1.25rem]"></p>
+      </form></div>
+        <p class="text-xs muted mt-2">Calculated in your browser with standard astronomical formulas and the Lahiri ayanamsa. Nothing you enter is sent anywhere.</p>
+      </div>
+    </div>
+  </section>
+  <section class="gutter mx-auto max-w-6xl pb-20" aria-live="polite"><div id="result" hidden></div></section>
+  <section class="bg2"><div class="gutter mx-auto max-w-6xl py-20 md:py-24 grid gap-12 lg:grid-cols-[1fr_1fr]">
+    <div class="reveal max-w-2xl"><p class="label gilt">The first house</p><h2 class="font-display text-4xl md:text-5xl mt-3 leading-tight">The Lagna is the chart's point of view.</h2><p class="mt-4 muted leading-relaxed">Every sign rises in turn over about 24 hours, so the Lagna changes roughly every two hours. Two people born on the same day in the same city can have very different charts because of it.</p><p class="mt-4 muted leading-relaxed">The Lagna describes the body, temperament and the general direction of life. Its ruling planet, the Lagna lord, and where that planet sits, are among the first things an astrologer looks at.</p><p class="mt-4 muted leading-relaxed">If your Lagna falls within a degree or two of a sign boundary, a few minutes' error in the birth time could change it. Chandan can rectify the time from past events in a consultation.</p></div>
+    <div class="card rounded-[14px] p-2 md:p-4 reveal self-start"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Lagna</th><th>Lagna lord</th></tr></thead><tbody><tr><td><b>Mesha</b> <span class="muted">Aries</span></td><td class="m">Mars</td></tr><tr><td><b>Vrishabha</b> <span class="muted">Taurus</span></td><td class="m">Venus</td></tr><tr><td><b>Mithuna</b> <span class="muted">Gemini</span></td><td class="m">Mercury</td></tr><tr><td><b>Karka</b> <span class="muted">Cancer</span></td><td class="m">Moon</td></tr><tr><td><b>Simha</b> <span class="muted">Leo</span></td><td class="m">Sun</td></tr><tr><td><b>Kanya</b> <span class="muted">Virgo</span></td><td class="m">Mercury</td></tr><tr><td><b>Tula</b> <span class="muted">Libra</span></td><td class="m">Venus</td></tr><tr><td><b>Vrishchika</b> <span class="muted">Scorpio</span></td><td class="m">Mars</td></tr><tr><td><b>Dhanu</b> <span class="muted">Sagittarius</span></td><td class="m">Jupiter</td></tr><tr><td><b>Makara</b> <span class="muted">Capricorn</span></td><td class="m">Saturn</td></tr><tr><td><b>Kumbha</b> <span class="muted">Aquarius</span></td><td class="m">Saturn</td></tr><tr><td><b>Meena</b> <span class="muted">Pisces</span></td><td class="m">Jupiter</td></tr></tbody></table></div></div>
+  </div></section>
+  <section class="gutter mx-auto max-w-5xl py-20 md:py-24">
+    <div class="relative overflow-hidden rounded-[16px] card p-8 md:p-12 text-center reveal">
+      <div class="sky opacity-60" aria-hidden="true"><span class="orb a" style="left:-20%;top:-40%"></span><span class="orb b" style="right:-20%;top:auto;bottom:-40%"></span></div>
+      <div class="relative">
+        <h2 class="font-display text-4xl md:text-5xl leading-tight">Want this read for you?</h2>
+        <p class="mt-4 muted max-w-xl mx-auto leading-relaxed">A free tool shows the chart. Chandan reads it with you: what it means for your question, and what to do next.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="../#consult" class="btn-ink px-7 py-3.5 font-medium">Book a consultation</a>
+          <a data-wa="Namaste, I have a question for Chandan ji." data-on="Ask on WhatsApp" href="../#ask" class="btn-soft px-7 py-3.5 font-medium">Ask a question</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="../assets/site.js"></script>
+<script src="../assets/astro.js"></script>
+<script src="../assets/tools.js"></script>
+</body>
+</html>

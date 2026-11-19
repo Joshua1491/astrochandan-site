@@ -1,0 +1,10 @@
+# Apache (GoDaddy hosting): custom 404 page and sensible caching
+ErrorDocument 404 /404.html
+DirectoryIndex index.html
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+</IfModule>

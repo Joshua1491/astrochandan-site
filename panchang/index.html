@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="sandstone">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Today&#x27;s Panchang | Chandan Shrivastava, Vedic Astrologer</title>
+<meta name="description" content="Free daily Panchang for any city: tithi, nakshatra, yoga, karana, sunrise, sunset, Rahu Kaal and Abhijit Muhurat.">
+<meta name="theme-color" content="#1f2a3a">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Cinzel:wght@400;500;600&family=Outfit:wght@300;400;500;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<script src="../assets/tw.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/tw.css">
+</head>
+<body data-tool="panchang">
+<div id="site-header"></div>
+<main>
+  <section class="relative overflow-hidden">
+    <div class="sky" aria-hidden="true"><span class="orb a"></span><span class="orb b"></span><div class="dust absolute inset-0"></div></div>
+    <div class="relative gutter mx-auto max-w-6xl pt-10 pb-16 md:pt-14 md:pb-24 grid gap-10 lg:grid-cols-[1fr_1fr] items-start">
+      <div class="min-w-0">
+        <nav class="text-xs muted" aria-label="Breadcrumb"><a class="hover:opacity-70" href="../">Home</a> <span aria-hidden="true">/</span> <a class="hover:opacity-70" href="../free-tools/">Free tools</a> <span aria-hidden="true">/</span> <span aria-current="page">Today's Panchang</span></nav>
+        <p class="label gilt mt-8">Free tool</p>
+        <h1 class="font-display mt-3 text-[2.6rem] leading-[1.04] sm:text-6xl tracking-tight">Today's Panchang</h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed muted">Tithi, Nakshatra, Yoga, Karana and weekday for any date and city, with sunrise, sunset, Rahu Kaal and Abhijit Muhurat.</p>
+      </div>
+      <div class="card rounded-[14px] p-6 md:p-8 min-w-0">
+        <p class="font-display text-2xl">Date and city</p>
+        <div class="mt-5"><form data-tool-form class="grid gap-3.5 sm:grid-cols-2">
+        <div class="min-w-0 sm:col-span-2"><label class="flabel" for="date">Date</label><input id="date" name="date" type="date" aria-label="Date" class="field rounded-[10px] px-4 py-3.5" required></div><div class="min-w-0 sm:col-span-2"><label class="flabel" for="pob">City</label><input id="pob" name="pob" list="cj-cities" autocomplete="off" aria-label="City" class="field px-4 py-3.5" placeholder="e.g. Gurugram">
+          <details class="place mt-2"><summary>Place not listed? Enter coordinates</summary><div class="grid grid-cols-3 gap-2 mt-2">
+            <input name="lat" inputmode="decimal" aria-label="Latitude" class="field px-3 py-2.5 text-sm" placeholder="Lat 28.46">
+            <input name="lon" inputmode="decimal" aria-label="Longitude" class="field px-3 py-2.5 text-sm" placeholder="Lon 77.03">
+            <input name="tz" inputmode="decimal" aria-label="UTC offset in hours" class="field px-3 py-2.5 text-sm" placeholder="UTC +5.5"></div></details></div>
+        <div class="sm:col-span-2 flex flex-wrap gap-3"><button class="btn-ink px-7 py-3.5 font-medium">Show the Panchang</button></div>
+        <p role="status" class="sm:col-span-2 text-sm min-h-[1.25rem]"></p>
+      </form></div>
+        <p class="text-xs muted mt-2">Calculated in your browser with standard astronomical formulas and the Lahiri ayanamsa. Nothing you enter is sent anywhere.</p>
+      </div>
+    </div>
+  </section>
+  <section class="gutter mx-auto max-w-6xl pb-20" aria-live="polite"><div id="result" hidden></div></section>
+  <section class="bg2"><div class="gutter mx-auto max-w-6xl py-20 md:py-24">
+    <p class="label gilt reveal">The five limbs</p><h2 class="font-display text-4xl md:text-5xl mt-3 reveal">Pancha + anga: the Hindu almanac.</h2>
+    <p class="mt-4 muted max-w-2xl reveal">A Panchang describes each day through five measures. Together they decide whether a day suits a wedding, a puja, a journey or a new venture. The values shown are those at local sunrise, as is the custom.</p>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5 reveal"><div class="border-t hair pt-4"><p class="font-display text-2xl">Tithi</p><p class="mt-1.5 text-sm muted leading-relaxed">The lunar day: each 12° the Moon gains on the Sun. Thirty tithis make a lunar month, fifteen waxing (Shukla) and fifteen waning (Krishna).</p></div><div class="border-t hair pt-4"><p class="font-display text-2xl">Vara</p><p class="mt-1.5 text-sm muted leading-relaxed">The weekday, ruled by the planet it is named after: Ravi (Sun), Soma (Moon), Mangal, Budh, Guru, Shukra and Shani.</p></div><div class="border-t hair pt-4"><p class="font-display text-2xl">Nakshatra</p><p class="mt-1.5 text-sm muted leading-relaxed">The lunar mansion the Moon is passing through, one of 27.</p></div><div class="border-t hair pt-4"><p class="font-display text-2xl">Yoga</p><p class="mt-1.5 text-sm muted leading-relaxed">One of 27 divisions of the combined longitude of the Sun and Moon. Some, such as Vyatipata and Vaidhriti, are avoided for new starts.</p></div><div class="border-t hair pt-4"><p class="font-display text-2xl">Karana</p><p class="mt-1.5 text-sm muted leading-relaxed">Half a tithi. Of the eleven karanas, Vishti (also called Bhadra) is avoided for auspicious work.</p></div></div>
+  </div></section>
+  <section class="gutter mx-auto max-w-5xl py-20 md:py-24">
+    <div class="relative overflow-hidden rounded-[16px] card p-8 md:p-12 text-center reveal">
+      <div class="sky opacity-60" aria-hidden="true"><span class="orb a" style="left:-20%;top:-40%"></span><span class="orb b" style="right:-20%;top:auto;bottom:-40%"></span></div>
+      <div class="relative">
+        <h2 class="font-display text-4xl md:text-5xl leading-tight">Want this read for you?</h2>
+        <p class="mt-4 muted max-w-xl mx-auto leading-relaxed">A free tool shows the chart. Chandan reads it with you: what it means for your question, and what to do next.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="../#consult" class="btn-ink px-7 py-3.5 font-medium">Book a consultation</a>
+          <a data-wa="Namaste, I have a question for Chandan ji." data-on="Ask on WhatsApp" href="../#ask" class="btn-soft px-7 py-3.5 font-medium">Ask a question</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="../assets/site.js"></script>
+<script src="../assets/astro.js"></script>
+<script src="../assets/tools.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="sandstone">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Daily, Weekly &amp; Monthly Horoscope | Chandan Shrivastava, Vedic Astrologer</title>
+<meta name="description" content="Daily, tomorrow, weekly and monthly horoscopes for all twelve Moon signs (Rashis), in the Vedic tradition.">
+<meta name="theme-color" content="#1f2a3a">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Cinzel:wght@400;500;600&family=Outfit:wght@300;400;500;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<script src="../assets/tw.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/tw.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <section class="relative overflow-hidden">
+    <div class="sky" aria-hidden="true"><span class="orb a"></span><span class="orb b"></span><div class="dust absolute inset-0"></div></div>
+    <div class="relative gutter mx-auto max-w-6xl pt-10 pb-16 md:pt-14 md:pb-24 grid gap-10 ">
+      <div class="min-w-0">
+        <nav class="text-xs muted" aria-label="Breadcrumb"><a class="hover:opacity-70" href="../">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Horoscope</span></nav>
+        <p class="label gilt mt-8">Rashiphal</p>
+        <h1 class="font-display mt-3 text-[2.6rem] leading-[1.04] sm:text-6xl tracking-tight">Daily horoscope</h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed muted">Today, tomorrow, this week and this month for all twelve Moon signs. Jyotish reads your Moon sign, not your Sun sign, so pick the Rashi you were born under.</p>
+      </div>
+
+    </div>
+  </section>
+  <section class="gutter mx-auto max-w-6xl -mt-6 pb-20">
+    <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2.5" id="signChips" role="group" aria-label="Choose your sign"></div>
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+      <div class="tabs" role="tablist" aria-label="Horoscope period" id="periodTabs">
+        <button role="tab" data-p="today" aria-selected="true">Today</button><button role="tab" data-p="tomorrow" aria-selected="false">Tomorrow</button><button role="tab" data-p="week" aria-selected="false">Weekly</button><button role="tab" data-p="month" aria-selected="false">Monthly</button>
+      </div>
+      <a href="../moon-sign/" class="link-arrow text-sm">Don't know your Moon sign?</a>
+    </div>
+    <article class="card rounded-[16px] p-6 md:p-10 mt-6">
+      <div id="reading" class="fade grid gap-10 md:grid-cols-[0.8fr_1.2fr]" aria-live="polite">
+        <div class="min-w-0">
+          <div class="flex items-center gap-4"><span id="hGlyph" class="font-display text-7xl gilt leading-none"></span><div><h2 id="hName" class="font-display text-3xl md:text-4xl"></h2><p id="hMeta" class="text-sm muted"></p></div></div>
+          <dl class="mt-8 grid grid-cols-2 gap-2.5 text-sm">
+            <div class="rounded-[10px] border hair p-3"><dt class="label muted text-[0.56rem]">Element</dt><dd id="hEl" class="mt-1 font-medium"></dd></div>
+            <div class="rounded-[10px] border hair p-3"><dt class="label muted text-[0.56rem]">Ruler</dt><dd id="hLord" class="mt-1 font-medium"></dd></div>
+            <div class="rounded-[10px] border hair p-3"><dt class="label muted text-[0.56rem]">Lucky colour</dt><dd id="hCol" class="mt-1 font-medium"></dd></div>
+            <div class="rounded-[10px] border hair p-3"><dt class="label muted text-[0.56rem]">Lucky number</dt><dd id="hNum" class="mt-1 font-medium"></dd></div>
+          </dl>
+        </div>
+        <div class="min-w-0">
+          <p class="label muted" id="hWhen"></p>
+          <p class="font-display text-2xl md:text-3xl leading-snug mt-3" id="hMain"></p>
+          <dl class="mt-8 grid gap-5 sm:grid-cols-2 text-sm">
+            <div class="border-t hair pt-4"><dt class="label gilt text-[0.6rem]">Love &amp; relationships</dt><dd class="mt-2 muted leading-relaxed" id="hLove"></dd></div>
+            <div class="border-t hair pt-4"><dt class="label gilt text-[0.6rem]">Career &amp; business</dt><dd class="mt-2 muted leading-relaxed" id="hWork"></dd></div>
+            <div class="border-t hair pt-4"><dt class="label gilt text-[0.6rem]">Money</dt><dd class="mt-2 muted leading-relaxed" id="hMoney"></dd></div>
+            <div class="border-t hair pt-4"><dt class="label gilt text-[0.6rem]">Health</dt><dd class="mt-2 muted leading-relaxed" id="hHealth"></dd></div>
+          </dl>
+        </div>
+      </div>
+    </article>
+    <p class="mt-5 text-xs muted">Sign horoscopes are general guidance for everyone born under a Moon sign. Your own chart, Dasha and transits make the picture personal.</p>
+  </section>
+  <section class="gutter mx-auto max-w-5xl py-20 md:py-24">
+    <div class="relative overflow-hidden rounded-[16px] card p-8 md:p-12 text-center reveal">
+      <div class="sky opacity-60" aria-hidden="true"><span class="orb a" style="left:-20%;top:-40%"></span><span class="orb b" style="right:-20%;top:auto;bottom:-40%"></span></div>
+      <div class="relative">
+        <h2 class="font-display text-4xl md:text-5xl leading-tight">Your sign is one-twelfth of the story.</h2>
+        <p class="mt-4 muted max-w-xl mx-auto leading-relaxed">A personal reading looks at your whole chart and the period you are in now, not just your Moon sign.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="../#consult" class="btn-ink px-7 py-3.5 font-medium">Book a consultation</a>
+          <a data-wa="Namaste, I have a question for Chandan ji." data-on="Ask on WhatsApp" href="../#ask" class="btn-soft px-7 py-3.5 font-medium">Ask a question</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="../assets/site.js"></script>
+<script src="../assets/horo.js"></script>
+<script>
+(function () {
+  var S = CJH.S, period = 'today', sign = 0, chips = document.getElementById('signChips');
+  try { var sv = parseInt(localStorage.getItem('cj-sign'), 10); if (sv >= 0 && sv < 12) sign = sv; } catch (e) {}
+  var q = (new URLSearchParams(location.search).get('sign') || '').toLowerCase();
+  S.forEach(function (s, i) { if (q && (s[1].toLowerCase() === q || s[0].toLowerCase() === q)) sign = i; });
+  S.forEach(function (s, i) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'chip rounded-[10px] px-3 py-3 text-left';
+    b.innerHTML = '<span class="font-display gilt text-2xl leading-none">' + s[2] + '\ufe0e</span><span class="block font-medium text-sm mt-1.5">' + s[0] + '</span><span class="block text-[0.7rem] muted">' + s[1] + '</span>';
+    b.addEventListener('click', function () { sign = i; try { localStorage.setItem('cj-sign', String(i)); } catch (e) {} history.replaceState(null, '', '?sign=' + s[1].toLowerCase()); update(); });
+    chips.appendChild(b);
+  });
+  function fill() {
+    var s = S[sign], r = CJH.reading(sign, period);
+    Array.prototype.forEach.call(chips.children, function (c, k) { c.setAttribute('aria-pressed', String(k === sign)); });
+    document.getElementById('hGlyph').textContent = s[2] + '\ufe0e';
+    document.getElementById('hName').textContent = s[0];
+    document.getElementById('hMeta').textContent = s[1];
+    document.getElementById('hEl').textContent = s[3];
+    document.getElementById('hLord').textContent = s[4];
+    document.getElementById('hCol').textContent = r.colour;
+    document.getElementById('hNum').textContent = r.number;
+    ['when', 'main', 'love', 'work', 'money', 'health'].forEach(function (k) { document.getElementById('h' + k.charAt(0).toUpperCase() + k.slice(1)).textContent = r[k]; });
+  }
+  function update() { var el = document.getElementById('reading'); if (CJ.reduce) return fill(); el.classList.add('swap'); setTimeout(function () { fill(); el.classList.remove('swap'); }, 200); }
+  document.querySelectorAll('#periodTabs button').forEach(function (b) {
+    b.addEventListener('click', function () { period = b.dataset.p; document.querySelectorAll('#periodTabs button').forEach(function (x) { x.setAttribute('aria-selected', String(x === b)); }); update(); });
+  });
+  fill();
+})();
+</script>
+</body>
+</html>
