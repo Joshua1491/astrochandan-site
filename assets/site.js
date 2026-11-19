@@ -175,7 +175,7 @@
   function norm(x) { return String(x || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z]/g, ''); }
   function loadPlaces() {
     if (placesP) return placesP;
-    placesP = fetch(BASE + 'assets/places.json').then(function (r) { return r.json(); }).then(function (d) {
+    placesP = fetch(BASE + 'assets/places.json?v=202611191347').then(function (r) { return r.json(); }).then(function (d) {
       PLACES = d.p.map(function (r) {
         var label = r[0] + (r[1] && r[1] !== r[0] ? ', ' + r[1] : '') + ', ' + (d.country[r[2]] || r[2]);
         return { name: r[0], label: label, lat: r[3], lon: r[4], tz: d.tz[r[5]], pop: r[6], n: norm(r[0]), a: (r[7] || []).map(norm), w: r[0].toLowerCase().split(/[\s-]+/).map(norm), rest: norm(label.slice(r[0].length)) };
